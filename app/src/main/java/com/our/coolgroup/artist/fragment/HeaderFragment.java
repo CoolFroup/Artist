@@ -31,12 +31,6 @@ public class HeaderFragment  extends Fragment{
         View view = inflater.inflate(R.layout.fragment_header, container, false);
         iv = (ImageView) view.findViewById(R.id.header_pager_iv);
         Glide.with(getContext()).load(imgUrl).into(iv);
-//        Picasso.with(getContext())
-//                .load(imgUrl)
-//                .placeholder(R.mipmap.zhuye)
-//                .error(R.mipmap.zhuye)
-//                .config(Bitmap.Config.RGB_565)
-//                .into(iv);
 
         return view;
     }
