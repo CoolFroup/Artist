@@ -121,6 +121,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 lastVisibleItemPosition = manager.findLastVisibleItemPosition();
+
             }
 
             @Override
