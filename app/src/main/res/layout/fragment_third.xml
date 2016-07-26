@@ -1,15 +1,59 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@android:color/holo_blue_dark"
-
+             android:background="#cccccc"
              tools:context="com.our.coolgroup.artist.fragment.ThirdFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+   <RelativeLayout
+       android:background="@android:color/black"
+       android:layout_width="match_parent"
+       android:layout_height="50dp">
+       <ImageView
+           android:padding="10dp"
+           android:layout_centerVertical="true"
+           android:src="@mipmap/btn_shopping_cart"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            />
+       <ImageView
+           android:padding="10dp"
+           android:layout_alignParentRight="true"
+           android:src="@mipmap/icon_setting"
+           android:layout_centerVertical="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+   </RelativeLayout>
+    <RelativeLayout
+        android:background="@android:color/black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="150dp">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </ScrollView>
+
+</LinearLayout>
