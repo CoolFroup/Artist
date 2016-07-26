@@ -22,8 +22,6 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:paddingTop="4dp"
-
             android:id="@+id/radio_first"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -32,13 +30,12 @@
             android:checked="true"
             android:drawableTop="@drawable/first_selector"
             android:gravity="center"
+            android:paddingTop="4dp"
             android:text="匠铺"
             android:textColor="@android:color/white"
             android:textSize="11dp"/>
 
         <RadioButton
-            android:paddingTop="4dp"
-
             android:id="@+id/radio_second"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,12 +43,12 @@
             android:button="@null"
             android:drawableTop="@drawable/second_selector"
             android:gravity="center"
+            android:paddingTop="4dp"
             android:text="空间"
             android:textColor="@android:color/white"
             android:textSize="11dp"/>
 
         <RadioButton
-            android:paddingTop="4dp"
             android:id="@+id/radio_third"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -59,6 +56,7 @@
             android:button="@null"
             android:drawableTop="@drawable/third_selector"
             android:gravity="center"
+            android:paddingTop="4dp"
             android:text="我的"
             android:textColor="@android:color/white"
             android:textSize="11dp"/>

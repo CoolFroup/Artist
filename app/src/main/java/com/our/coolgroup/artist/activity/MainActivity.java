@@ -17,7 +17,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-
     @Bind(R.id.linear_main_fragment)
     LinearLayout mLinearMainFragment;
     @Bind(R.id.radio_first)
@@ -45,6 +44,11 @@ public class MainActivity extends BaseActivity {
     @Override
     void initEvent() {
 
+    }
+
+    @Override
+    protected void destoryViews() {
+        ButterKnife.unbind(this);
     }
 
 

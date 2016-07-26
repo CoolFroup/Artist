@@ -17,4 +17,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     abstract void initView();
     abstract void initData();
     abstract void initEvent();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        destoryViews();
+    }
+
+    protected abstract void destoryViews();
 }
