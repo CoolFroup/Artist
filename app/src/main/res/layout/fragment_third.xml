@@ -1,57 +1,157 @@
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="#cccccc"
-             tools:context="com.our.coolgroup.artist.fragment.ThirdFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cccccc"
+    android:orientation="vertical"
+    tools:context="com.our.coolgroup.artist.fragment.ThirdFragment">
 
-   <RelativeLayout
-       android:background="@android:color/black"
-       android:layout_width="match_parent"
-       android:layout_height="50dp">
-       <ImageView
-           android:padding="10dp"
-           android:layout_centerVertical="true"
-           android:src="@mipmap/btn_shopping_cart"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我的"
-            />
-       <ImageView
-           android:padding="10dp"
-           android:layout_alignParentRight="true"
-           android:src="@mipmap/icon_setting"
-           android:layout_centerVertical="true"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"/>
-   </RelativeLayout>
     <RelativeLayout
-        android:background="@android:color/black"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <LinearLayout
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
+        android:layout_height="50dp"
+        android:background="@android:color/black">
 
         <ImageView
+            android:id="@+id/img_third_shopping"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/btn_shopping_cart"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的"
+            android:textColor="@android:color/white"
+            />
+
+        <ImageView
+            android:id="@+id/img_third_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/icon_setting"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@android:color/black">
+
+        <LinearLayout
+            android:id="@+id/linear_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_user_icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@mipmap/ic_default_portrait"/>
+
+            <TextView
+                android:id="@+id/txt_isLogin"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="7dp"
+                android:text="未登陆"
+                android:textColor="@android:color/darker_gray"/>
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/black"
+        android:orientation="horizontal">
+       <LinearLayout
+           android:id="@+id/linear_preparePay"
+           android:gravity="center"
+           android:orientation="vertical"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1">
+           <TextView
+               android:id="@+id/txt_preparePay_num"
+               android:text="0"
+               android:textColor="@android:color/darker_gray"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               />
+           <TextView
+               android:layout_height="match_parent"
+              android:layout_width="wrap_content"
+               android:gravity="center"
+               android:text="待付款"
+               android:textColor="@android:color/darker_gray"
+               android:textSize="10dp"
+               />
+       </LinearLayout>
+
+ <LinearLayout
+           android:id="@+id/linear_prepareRecieve"
+           android:gravity="center"
+           android:orientation="vertical"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1">
+           <TextView
+               android:id="@+id/txt_prepareRecieve_num"
+               android:text="0"
+               android:textColor="@android:color/darker_gray"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               />
+           <TextView
+               android:layout_height="match_parent"
+              android:layout_width="wrap_content"
+               android:gravity="center"
+               android:text="待收货"
+               android:textColor="@android:color/darker_gray"
+               android:textSize="10dp"
+               />
+       </LinearLayout>
+
+ <LinearLayout
+           android:id="@+id/linear_compelete"
+           android:gravity="center"
+           android:orientation="vertical"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1">
+           <TextView
+               android:id="@+id/txt_compelete_num"
+               android:text="0"
+               android:textColor="@android:color/darker_gray"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               />
+
+           <TextView
+               android:layout_height="match_parent"
+              android:layout_width="wrap_content"
+               android:gravity="center"
+               android:text="已完成"
+               android:textColor="@android:color/darker_gray"
+               android:textSize="10dp"
+               />
+       </LinearLayout>
+
+    </LinearLayout>
+
+
     <ScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
 
     </ScrollView>
