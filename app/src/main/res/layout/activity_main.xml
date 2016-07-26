@@ -30,7 +30,7 @@
             android:checked="true"
             android:drawableTop="@drawable/first_selector"
             android:gravity="center"
-            android:paddingTop="4dp"
+            android:paddingTop="6dp"
             android:text="匠铺"
             android:textColor="@android:color/white"
             android:textSize="11dp"/>
@@ -43,9 +43,9 @@
             android:button="@null"
             android:drawableTop="@drawable/second_selector"
             android:gravity="center"
-            android:paddingTop="4dp"
+            android:paddingTop="6dp"
             android:text="空间"
-            android:textColor="@android:color/white"
+            android:textColor="#939393"
             android:textSize="11dp"/>
 
         <RadioButton
@@ -56,9 +56,9 @@
             android:button="@null"
             android:drawableTop="@drawable/third_selector"
             android:gravity="center"
-            android:paddingTop="4dp"
+            android:paddingTop="6dp"
             android:text="我的"
-            android:textColor="@android:color/white"
+            android:textColor="#939393"
             android:textSize="11dp"/>
 
     </RadioGroup>

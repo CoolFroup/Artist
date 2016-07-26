@@ -1,5 +1,6 @@
 package com.our.coolgroup.artist.activity;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -60,18 +61,27 @@ public class MainActivity extends BaseActivity {
                 FragmentTransaction transaction1 = fragmentManager1.beginTransaction();
                 FirstFragment firstFragment = new FirstFragment();
                 transaction1.replace(R.id.linear_main_fragment, firstFragment).commit();
+                mRadioFirst.setTextColor(Color.WHITE);
+                mRadioSecond.setTextColor(Color.GRAY);
+                mRadioThird.setTextColor(Color.GRAY);
                 break;
             case R.id.radio_second:
                 FragmentManager fragmentManager2 = getSupportFragmentManager();
                 FragmentTransaction transaction2 = fragmentManager2.beginTransaction();
                 SecondFragment secondFragment = new SecondFragment();
                 transaction2.replace(R.id.linear_main_fragment, secondFragment).commit();
+                mRadioSecond.setTextColor(Color.WHITE);
+                mRadioFirst.setTextColor(Color.GRAY);
+                mRadioThird.setTextColor(Color.GRAY);
                 break;
             case R.id.radio_third:
                 FragmentManager fragmentManager3 = getSupportFragmentManager();
                 FragmentTransaction transaction3 = fragmentManager3.beginTransaction();
                 ThirdFragment thirdFragment = new ThirdFragment();
                 transaction3.replace(R.id.linear_main_fragment, thirdFragment).commit();
+                mRadioThird.setTextColor(Color.WHITE);
+                mRadioFirst.setTextColor(Color.GRAY);
+                mRadioSecond.setTextColor(Color.GRAY);
                 break;
         }
     }
