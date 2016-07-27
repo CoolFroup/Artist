@@ -9,7 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="#000000"
         android:orientation="horizontal">
 
@@ -22,7 +22,7 @@
 
         <TextView
             android:layout_width="263dp"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="匠铺"
             android:textColor="#ffffff"
@@ -63,6 +63,7 @@
                 </android.support.v4.view.ViewPager>
 
                 <LinearLayout
+
                     android:id="@+id/linearLayout_head"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,11 +96,14 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+
+                    android:id="@+id/guijia_first"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:onClick="onClick"
+                    android:layout_weight="1"
                     android:clickable="true"
-                    android:layout_weight="1">
+                    android:focusable="true"
+                  >
 
                     <ImageView
                         android:id="@+id/iv_title_first1"
@@ -127,12 +131,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/zuoyi_first"
                     android:layout_width="0dp"
-
-                    android:onClick="onClick"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                >
 
                     <ImageView
                         android:id="@+id/iv_title_first2"
@@ -160,11 +165,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/zhuoji_first"
                     android:layout_width="0dp"
-                    android:onClick="onClick"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
 
                     <ImageView
                         android:id="@+id/iv_title_first3"
@@ -192,11 +199,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/chuang_first"
                     android:layout_width="0dp"
-                    android:onClick="onClick"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
 
                     <ImageView
                         android:id="@+id/iv_title_first4"
@@ -233,11 +242,13 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:onClick="onClick"
-                    android:clickable="true"
+                    android:id="@+id/shafa_first"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
 
                     <ImageView
                         android:id="@+id/iv_title_first5"
@@ -265,11 +276,13 @@
 
 
                 <LinearLayout
-                    android:onClick="onClick"
-                    android:clickable="true"
+                    android:id="@+id/dengju_first"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                   >
 
                     <ImageView
                         android:id="@+id/iv_title_first6"
@@ -297,11 +310,13 @@
 
 
                 <LinearLayout
-                    android:onClick="onClick"
-                    android:clickable="true"
+                    android:id="@+id/zhuangshi_first"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
 
                     <ImageView
                         android:id="@+id/iv_title_first7"
@@ -329,11 +344,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/qimin_first"
                     android:layout_width="0dp"
-                    android:onClick="onClick"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
 
                     <ImageView
                         android:id="@+id/iv_title_first8"

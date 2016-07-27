@@ -1,9 +1,12 @@
 package com.our.coolgroup.artist.fragment;
 
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -14,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.our.coolgroup.artist.activity.FenleiActivity;
 import com.our.coolgroup.artist.bean.Header_firstBean;
 import com.our.coolgroup.artist.bean.TitleBean_first;
 import com.our.coolgroup.artist.R;
@@ -34,7 +39,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements View.OnClickListener {
     private ViewPager index_header_viewpager;
     private View mView;
     private LinearLayout linearLayout_head;
@@ -51,12 +56,15 @@ public class FirstFragment extends Fragment {
 
     private ImageView iv_title_first1, iv_title_first2, iv_title_first3, iv_title_first4, iv_title_first5, iv_title_first6, iv_title_first7, iv_title_first8;
     private TextView tv_title_first1, tv_title_first2, tv_title_first3, tv_title_first4, tv_title_first5, tv_title_first6, tv_title_first7, tv_title_first8;
+    private LinearLayout guijia_first, zuoyi_first, zhuoji_first, chuang_first, shafa_first, dengju_first, zhuangshi_first, qimin_first;
     private TabLayout tabLayout_first;
     private ViewPager viewPager_first;
     private ViewPagerAdapter mViewPagerAdapter;
 
-    private String[] path={"http://api.jiangwoo.com/api/v2/products?page=1&source=jiangwoo","http://api.jiangwoo.com/api/v2/products?page=1&source=external"};
+    //独立设计，匠物精选地址
+    private String[] path = {"http://api.jiangwoo.com/api/v2/products?page=1&source=jiangwoo", "http://api.jiangwoo.com/api/v2/products?page=1&source=external"};
 
+    private Bundle bundle;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -101,6 +109,7 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_first, container, false);
+        bundle = new Bundle();
         initView();
 
         //设置焦点，置顶
@@ -113,7 +122,7 @@ public class FirstFragment extends Fragment {
 
 
         mOkHttpClient = new OkHttpClient();
-
+        //header的解析地址
         Request request = new Request.Builder().url("http://api.jiangwoo.com/api/v1/headlines?page=1")
                 .build();
         final Call call = mOkHttpClient.newCall(request);
@@ -164,12 +173,14 @@ public class FirstFragment extends Fragment {
         });
 
 
-
         setTitle();
         initTab();
+
+        initListner();
+
+
         return mView;
     }
-
 
 
     private void initView() {
@@ -195,8 +206,19 @@ public class FirstFragment extends Fragment {
         tv_title_first7 = (TextView) mView.findViewById(R.id.tv_title_first7);
         tv_title_first8 = (TextView) mView.findViewById(R.id.tv_title_first8);
 
-        tabLayout_first= (TabLayout) mView.findViewById(R.id.tabLayout_first);
-        viewPager_first= (ViewPager) mView.findViewById(R.id.viewPager_first);
+        tabLayout_first = (TabLayout) mView.findViewById(R.id.tabLayout_first);
+        viewPager_first = (ViewPager) mView.findViewById(R.id.viewPager_first);
+
+        guijia_first = (LinearLayout) mView.findViewById(R.id.guijia_first);
+        zuoyi_first = (LinearLayout) mView.findViewById(R.id.zuoyi_first);
+        zhuoji_first = (LinearLayout) mView.findViewById(R.id.zhuoji_first);
+        chuang_first = (LinearLayout) mView.findViewById(R.id.chuang_first);
+        shafa_first = (LinearLayout) mView.findViewById(R.id.shafa_first);
+        dengju_first = (LinearLayout) mView.findViewById(R.id.dengju_first);
+        zhuangshi_first = (LinearLayout) mView.findViewById(R.id.zhuangshi_first);
+        qimin_first = (LinearLayout) mView.findViewById(R.id.qimin_first);
+
+
     }
 
 
@@ -214,11 +236,11 @@ public class FirstFragment extends Fragment {
                         TitleBean_first bean = gson.fromJson(response.body().string(), TitleBean_first.class);
                         List<TitleBean_first.CategoriesBean> categories = bean.getCategories();
 
-                        final String[] img_title=new String[8];
-                        final String[] txt_title=new String[8];
+                        final String[] img_title = new String[8];
+                        final String[] txt_title = new String[8];
                         for (int i = 0; i < categories.size(); i++) {
-                            img_title[i]=categories.get(categories.size()-i-1).getImage_black();
-                            txt_title[i]= categories.get(categories.size()-i-1).getTitle();
+                            img_title[i] = categories.get(categories.size() - i - 1).getImage_black();
+                            txt_title[i] = categories.get(categories.size() - i - 1).getTitle();
                         }
 
                         handler.post(new Runnable() {
@@ -256,14 +278,14 @@ public class FirstFragment extends Fragment {
     }
 
     private void initTab() {
-       List sFragments = new ArrayList<>();
-       List sTitles = new ArrayList<>();
+        List sFragments = new ArrayList<>();
+        List sTitles = new ArrayList<>();
 
         sTitles.add("独立设计");
         sTitles.add("匠物精选");
 
         for (int i = 0; i < 2; i++) {
-           ListFragment fragment = new ListFragment();
+            ListFragment fragment = new ListFragment();
             Bundle bundle = new Bundle();
 
 //            bundle.putInt("id", id[i]);
@@ -271,8 +293,6 @@ public class FirstFragment extends Fragment {
             fragment.setArguments(bundle);
             sFragments.add(fragment);
         }
-
-
 
 
         mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager(), sFragments, sTitles);
@@ -285,4 +305,92 @@ public class FirstFragment extends Fragment {
     }
 
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
+    public void initListner(){
+        guijia_first.setOnClickListener(this);
+        zuoyi_first.setOnClickListener(this);
+        zhuoji_first.setOnClickListener(this);
+        chuang_first.setOnClickListener(this);
+        shafa_first.setOnClickListener(this);
+        dengju_first.setOnClickListener(this);
+        zhuangshi_first.setOnClickListener(this);
+        qimin_first.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.guijia_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%9F%9C%E6%9E%B6");
+                bundle.putString("title","柜架");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.zuoyi_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%BA%A7%E6%A4%85");
+                bundle.putString("title","座椅");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.zhuoji_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%A1%8C%E5%87%A0");
+                bundle.putString("title","桌几");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.chuang_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%BA%8A");
+                bundle.putString("title","床");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.shafa_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%B2%99%E5%8F%91");
+                bundle.putString("title","沙发");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.dengju_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E7%81%AF%E5%85%B7");
+                bundle.putString("title","灯具");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.zhuangshi_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E8%A3%85%E9%A5%B0");
+                bundle.putString("title","装饰");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.qimin_first:
+                bundle.clear();
+                intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
+                bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%99%A8%E7%9A%BF");
+                bundle.putString("title","器皿");
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+        }
+    }
 }
