@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.our.coolgroup.artist.bean.SecondBean;
 import com.our.coolgroup.artist.R;
 import com.our.coolgroup.artist.adapter.SecondRecyclerAdapter;
 import com.our.coolgroup.artist.utils.Conts;
@@ -46,7 +45,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
 
     private int page = 1;
     private boolean isDown = false;
-    private List<SecondBean.SpacesBean> data;
+    private List<com.our.coolgroup.artist.bean.SecondBean.SpacesBean> data;
 
 
     public SecondFragment() {
@@ -58,7 +57,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            SecondBean bean = (SecondBean) msg.obj;
+            com.our.coolgroup.artist.bean.SecondBean bean = (com.our.coolgroup.artist.bean.SecondBean) msg.obj;
 
             data = bean.getSpaces();
             adapter.setData(data);
@@ -166,7 +165,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                 if (response != null) {
                     Gson gson = new Gson();
                     String string = response.body().string();
-                    SecondBean secondBean = gson.fromJson(string, SecondBean.class);
+                    com.our.coolgroup.artist.bean.SecondBean secondBean = gson.fromJson(string, com.our.coolgroup.artist.bean.SecondBean.class);
 
                     Message msg = Message.obtain();
                     msg.obj = secondBean;

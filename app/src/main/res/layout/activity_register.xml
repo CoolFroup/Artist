@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.our.coolgroup.artist.activity.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_login_logo"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="手机号或邮箱"
+            android:textColor="#9b9b9b"
+            android:textColorHint="@android:color/darker_gray"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/FloatingStyle"
+            >
+
+            <android.support.design.widget.TextInputEditText
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="phone|textEmailAddress"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@drawable/input_cusor"
+                android:textSize="16dp"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="0.5dp"
+            android:background="#9b9b9b"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="密码"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/darker_gray"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/FloatingStyle"
+            >
+
+            <android.support.design.widget.TextInputEditText
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="#9b9b9b"
+                android:textCursorDrawable="@drawable/input_cusor"
+                android:textSize="16dp"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="0.5dp"
+            android:background="#9b9b9b"
+            />
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="50dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/view"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="验证码"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/FloatingStyle">
+
+                <android.support.design.widget.TextInputEditText
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/et_message_code"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:inputType="textPassword"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="#9b9b9b"
+                    android:textCursorDrawable="@drawable/input_cusor"
+                    android:textSize="16dp"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+
+                android:layout_width="150dp"
+                android:layout_height="0.5dp"
+                android:layout_alignBottom="@+id/view"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#9b9b9b"/>
+
+            <TextView
+                android:id="@+id/txt_get_code"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="点击获取验证码"
+                android:textColor="@android:color/white"
+                android:textSize="10dp"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_login_use_before"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="已有账号登陆"
+            android:textColor="#9b9b9b"
+            android:textSize="10dp"
+            />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:text="登录"
+            android:textColor="@android:color/black"
+            android:textSize="14dp"/>
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击注册表示同意匠物"
+                android:textColor="#9b9b9b"
+                android:textSize="10dp"/>
+
+            <TextView
+                android:id="@+id/txt_user_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="用户协议"
+                android:textColor="#ffffff"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_any_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:text="注册遇到问题？"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/img_cancle"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_cancel"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

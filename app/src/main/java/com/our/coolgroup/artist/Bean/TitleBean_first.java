@@ -1,4 +1,4 @@
-package com.our.coolgroup.artist.Bean;
+package com.our.coolgroup.artist.bean;
 
 import java.util.List;
 
