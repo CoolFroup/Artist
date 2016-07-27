@@ -3,10 +3,9 @@ package com.our.coolgroup.artist.bean;
 import java.util.List;
 
 /**
- * Created by samsung on 2016/7/26.
+ * Created by Administrator on 2016/7/26.
  */
 public class SecondBean {
-
     /**
      * id : 84
      * name : 唐坊主题酒店
@@ -103,3 +102,4 @@ public class SecondBean {
         }
     }
 }
+

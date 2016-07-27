@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.our.coolgroup.artist.Bean.Header_firstBean;
-import com.our.coolgroup.artist.Bean.TitleBean_first;
+import com.our.coolgroup.artist.bean.Header_firstBean;
+import com.our.coolgroup.artist.bean.TitleBean_first;
 import com.our.coolgroup.artist.R;
 import com.our.coolgroup.artist.adapter.HeaderAdapter;
 import com.our.coolgroup.artist.adapter.ViewPagerAdapter;
@@ -231,14 +231,14 @@ public class FirstFragment extends Fragment {
 
                                 Log.e("TAG", "========3333"+img_title );
                                 Log.e("TAG", "========4444"+txt_title );
-                                Glide.with(getContext()).load(img_title[0]).into(iv_title_first1);
-                                Glide.with(getContext()).load(img_title[1]).into(iv_title_first2);
-                                Glide.with(getContext()).load(img_title[2]).into(iv_title_first3);
-                                Glide.with(getContext()).load(img_title[3]).into(iv_title_first4);
-                                Glide.with(getContext()).load(img_title[4]).into(iv_title_first5);
-                                Glide.with(getContext()).load(img_title[5]).into(iv_title_first6);
-                                Glide.with(getContext()).load(img_title[6]).into(iv_title_first7);
-                                Glide.with(getContext()).load(img_title[7]).into(iv_title_first8);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[0]).into(iv_title_first1);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[1]).into(iv_title_first2);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[2]).into(iv_title_first3);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[3]).into(iv_title_first4);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[4]).into(iv_title_first5);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[5]).into(iv_title_first6);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[6]).into(iv_title_first7);
+                                Glide.with(FirstFragment.this.getContext()).load(img_title[7]).into(iv_title_first8);
 
 
                                 tv_title_first1.setText(txt_title[0]);

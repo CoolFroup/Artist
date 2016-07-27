@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.our.coolgroup.artist.Bean.Header_firstBean;
+import com.our.coolgroup.artist.bean.Header_firstBean;
 import com.our.coolgroup.artist.fragment.HeaderFragment;
 
 import java.util.ArrayList;

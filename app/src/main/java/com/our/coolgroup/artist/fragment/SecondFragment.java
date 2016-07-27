@@ -20,10 +20,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.our.coolgroup.artist.bean.SecondBean;
 import com.our.coolgroup.artist.R;
 import com.our.coolgroup.artist.adapter.SecondRecyclerAdapter;
-import com.our.coolgroup.artist.bean.SecondBean;
-import com.our.coolgroup.artist.conts.Conts;
+import com.our.coolgroup.artist.utils.Conts;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;

@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.our.coolgroup.artist.R;
 import com.our.coolgroup.artist.bean.SecondBean;
+import com.our.coolgroup.artist.R;
 
 import java.util.ArrayList;
 import java.util.List;
