@@ -2,7 +2,6 @@ package com.our.coolgroup.artist.fragment;
 
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,23 +9,21 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.our.coolgroup.artist.activity.FenleiActivity;
-import com.our.coolgroup.artist.bean.Header_firstBean;
-import com.our.coolgroup.artist.bean.TitleBean_first;
 import com.our.coolgroup.artist.R;
+import com.our.coolgroup.artist.activity.FenleiActivity;
 import com.our.coolgroup.artist.adapter.HeaderAdapter;
 import com.our.coolgroup.artist.adapter.ViewPagerAdapter;
+import com.our.coolgroup.artist.bean.Header_firstBean;
+import com.our.coolgroup.artist.bean.TitleBean_first;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -247,7 +244,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void run() {
 
-                                Glide.with(FirstFragment.this.getContext()).load(img_title[0]).into(iv_title_first1);
+                                Glide.with(getActivity()).load(img_title[0]).into(iv_title_first1);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[1]).into(iv_title_first2);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[2]).into(iv_title_first3);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[3]).into(iv_title_first4);

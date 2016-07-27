@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".activity.RegisterActivity">
         </activity>
+        <activity android:name=".activity.UserSettingActivity">
+        </activity>
         <activity android:name=".activity.InfoActivity">
         </activity>
         <activity android:name=".activity.DetailActivity">

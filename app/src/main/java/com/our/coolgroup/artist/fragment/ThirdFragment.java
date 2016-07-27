@@ -1,7 +1,9 @@
 package com.our.coolgroup.artist.fragment;
 
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -19,9 +21,11 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.our.coolgroup.artist.R;
 import com.our.coolgroup.artist.activity.LoginActivity;
+import com.our.coolgroup.artist.activity.UserSettingActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -92,10 +96,11 @@ public class ThirdFragment extends Fragment {
         return view;
     }
 
+
+
     private void initView() {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_default_portrait);
         mImgUserIcon.setImageBitmap(toRoundBitmap(bitmap));
-
     }
 
     public Bitmap toRoundBitmap(Bitmap bitmap) {
@@ -132,6 +137,22 @@ public class ThirdFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("token", Activity.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "None");
+        String username = sharedPreferences.getString("username", "username");
+        if (!token.equals("None")) {
+            isLogin=true;
+        }else {
+            isLogin=false;
+            mTxtIsLogin.setText("未登陆");
+        }
+        if (isLogin) {
+            mTxtIsLogin.setText(username);
+        }
+    }
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
@@ -139,28 +160,41 @@ public class ThirdFragment extends Fragment {
 
     @OnClick({R.id.img_third_shopping, R.id.img_third_setting, R.id.linear_login, R.id.linear_preparePay, R.id.linear_prepareRecieve, R.id.linear_compelete, R.id.linear_orders, R.id.linear_message, R.id.linear_sddress, R.id.linear_coupons, R.id.linear_space_orders, R.id.linear_space_like, R.id.linear_products_liked, R.id.linear_customer_service, R.id.linear_esigners_in})
     public void onClick(View view) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("token", Activity.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "None");
+        if (!token.equals("None")) {
+           isLogin=true;
+        }else {
+            isLogin=false;
+        }
         switch (view.getId()) {
+            //购物车
             case R.id.img_third_shopping:
                 if (isLogin) {
-
+                    Toast.makeText(getActivity(), "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
                 break;
+            //设置
             case R.id.img_third_setting:
 
                 break;
+            //登录
             case R.id.linear_login:
                 if (isLogin) {
-
+                    Toast.makeText(getActivity(), "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), UserSettingActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent3 = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent3);
                 }
                 break;
+            //待付款
             case R.id.linear_preparePay:
                 if (isLogin) {
 
@@ -170,6 +204,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent4);
                 }
                 break;
+            //待收货
             case R.id.linear_prepareRecieve:
                 if (isLogin) {
 
@@ -179,6 +214,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent5);
                 }
                 break;
+            //已完成
             case R.id.linear_compelete:
                 if (isLogin) {
 
@@ -188,6 +224,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent6);
                 }
                 break;
+            //商品订单
             case R.id.linear_orders:
                 if (isLogin) {
 
@@ -197,6 +234,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent7);
                 }
                 break;
+            //我的消息
             case R.id.linear_message:
                 if (isLogin) {
 
@@ -206,6 +244,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent8);
                 }
                 break;
+            //收货地址
             case R.id.linear_sddress:
                 if (isLogin) {
 
@@ -215,6 +254,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent9);
                 }
                 break;
+            //优惠券
             case R.id.linear_coupons:
                 if (isLogin) {
 
@@ -224,6 +264,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent10);
                 }
                 break;
+            //空间订单
             case R.id.linear_space_orders:
                 if (isLogin) {
 
@@ -233,6 +274,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent11);
                 }
                 break;
+            //喜欢的空间
             case R.id.linear_space_like:
                 if (isLogin) {
 
@@ -242,6 +284,7 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent12);
                 }
                 break;
+            //喜欢的商品
             case R.id.linear_products_liked:
                 if (isLogin) {
 
@@ -251,9 +294,11 @@ public class ThirdFragment extends Fragment {
                     startActivity(intent13);
                 }
                 break;
+            //联系客服
             case R.id.linear_customer_service:
 
                 break;
+            //设计师入驻
             case R.id.linear_esigners_in:
                 WebSettings webSettings = mWebview.getSettings();
 
