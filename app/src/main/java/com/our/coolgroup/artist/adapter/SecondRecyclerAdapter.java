@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.our.coolgroup.artist.bean.SecondBean;
 import com.our.coolgroup.artist.R;
+import com.our.coolgroup.artist.bean.SecondBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +18,17 @@ import java.util.List;
 /**
  * Created by samsung on 2016/7/26.
  */
-public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAdapter.SecondViewHolder> {
+public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAdapter.SecondViewHolder> implements View.OnClickListener {
     private List<SecondBean.SpacesBean> data;
     private List<SecondBean.SpacesBean> list = new ArrayList<>();
     private Context context;
     private LayoutInflater inflater;
+    private RecyclerView mRecyclerView;
+    private OnItemClickListener itemClickListener;
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
 
     public SecondRecyclerAdapter(Context context) {
         this.context = context;
@@ -40,12 +46,27 @@ public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAd
     }
 
     public void clearList() {
-        data.clear();
+        list.clear();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        mRecyclerView = recyclerView;
+
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+        mRecyclerView = null;
     }
 
     @Override
     public SecondViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.second_index_item, parent, false);
+
+        view.setOnClickListener(this);
         return new SecondViewHolder(view);
     }
 
@@ -65,6 +86,14 @@ public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAd
         return list != null ? list.size() : 0;
     }
 
+    @Override
+    public void onClick(View v) {
+        int position = mRecyclerView.getChildAdapterPosition(v);
+
+        if (itemClickListener != null)
+            itemClickListener.onItemClick(position);
+    }
+
     class SecondViewHolder extends RecyclerView.ViewHolder {
         ImageView iv;
         TextView title, like;
@@ -76,6 +105,10 @@ public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAd
             like = (TextView) itemView.findViewById(R.id.like_second_item);
         }
 
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
 }

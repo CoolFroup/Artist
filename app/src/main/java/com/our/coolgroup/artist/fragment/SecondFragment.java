@@ -2,6 +2,7 @@ package com.our.coolgroup.artist.fragment;
 
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,10 +18,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.our.coolgroup.artist.R;
+import com.our.coolgroup.artist.activity.DetailActivity;
+import com.our.coolgroup.artist.activity.InfoActivity;
 import com.our.coolgroup.artist.adapter.SecondRecyclerAdapter;
 import com.our.coolgroup.artist.utils.Conts;
 import com.squareup.okhttp.Call;
@@ -47,7 +49,6 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     private boolean isDown = false;
     private List<com.our.coolgroup.artist.bean.SecondBean.SpacesBean> data;
 
-
     public SecondFragment() {
         // Required empty public constructor
     }
@@ -62,6 +63,18 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
             data = bean.getSpaces();
             adapter.setData(data);
             mRecyclerView.setAdapter(adapter);
+
+            //跳转详情页面
+            adapter.setItemClickListener(new SecondRecyclerAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    Intent intent = new Intent(SecondFragment.this.getActivity(), DetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("titleDetail", data.get(position));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
         }
     };
 
@@ -76,6 +89,10 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         mImageView = (ImageView) view.findViewById(R.id.iv_cloud_second);
         mFrameLayout = (FrameLayout) view.findViewById(R.id.frameLayout_second);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_second);
+
+        mImageView.setFocusable(true);
+        mImageView.setFilterTouchesWhenObscured(true);
+        mImageView.requestFocus();
 
         //下拉刷新
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout_second);
@@ -178,6 +195,9 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getContext(), "跳转", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(SecondFragment.this.getActivity(), InfoActivity.class);
+        intent.putExtra("path", Conts.URL_SECOND_HEAD);
+        startActivity(intent);
     }
+
 }

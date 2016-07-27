@@ -1,5 +1,6 @@
 package com.our.coolgroup.artist.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class SecondBean {
         this.spaces = spaces;
     }
 
-    public static class SpacesBean {
+    public static class SpacesBean implements Serializable {
         private int id;
         private String name;
         private String thumb;
