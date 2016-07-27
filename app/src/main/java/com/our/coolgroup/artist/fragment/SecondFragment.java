@@ -134,6 +134,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                             page = 1;
                         adapter.notifyDataSetChanged();
                     } else {
+
                         isDown = false;
                     }
                 }
