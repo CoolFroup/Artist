@@ -18,9 +18,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.our.coolgroup.artist.R;
+import com.our.coolgroup.artist.activity.DesignActivity;
 import com.our.coolgroup.artist.activity.DetailActivity;
 import com.our.coolgroup.artist.activity.InfoActivity;
 import com.our.coolgroup.artist.adapter.SecondRecyclerAdapter;
@@ -48,6 +50,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     private int page = 1;
     private boolean isDown = false;
     private List<com.our.coolgroup.artist.bean.SecondBean.SpacesBean> data;
+    private TextView mTextView;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -70,7 +73,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                 public void onItemClick(int position) {
                     Intent intent = new Intent(SecondFragment.this.getActivity(), DetailActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("titleDetail", data.get(position));
+                    bundle.putSerializable("titleDetail", adapter.getList().get(position));
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -89,6 +92,8 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         mImageView = (ImageView) view.findViewById(R.id.iv_cloud_second);
         mFrameLayout = (FrameLayout) view.findViewById(R.id.frameLayout_second);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_second);
+        mTextView = (TextView) view.findViewById(R.id.tv_GoToDesign);
+        mTextView.setOnClickListener(this);
 
         mImageView.setFocusable(true);
         mImageView.setFilterTouchesWhenObscured(true);
@@ -106,6 +111,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         String path = String.format(Conts.URL_SECOND_INDEX, page);
         loadData(path);
 
+        //下拉刷新
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -115,7 +121,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                         adapter.clearList();
                         adapter.notifyDataSetChanged();
 
-                        String path = String.format(Conts.URL_SECOND_INDEX, page++);
+                        String path = String.format(Conts.URL_SECOND_INDEX, ++page);
                         if (page == 8)
                             page = 1;
                         loadData(path);
@@ -130,6 +136,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        //上拉加载
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private int lastVisibleItemPosition;
 
@@ -137,7 +144,6 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 lastVisibleItemPosition = manager.findLastVisibleItemPosition();
-
             }
 
             @Override
@@ -146,12 +152,11 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition + 1 == adapter.getItemCount()) {
                     if (!isDown) {
                         isDown = true;
-                        loadData(String.format(Conts.URL_SECOND_INDEX, page++));
+                        loadData(String.format(Conts.URL_SECOND_INDEX, ++page));
                         if (page == 8)
                             page = 1;
                         adapter.notifyDataSetChanged();
                     } else {
-
                         isDown = false;
                     }
                 }
@@ -195,9 +200,19 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(SecondFragment.this.getActivity(), InfoActivity.class);
-        intent.putExtra("path", Conts.URL_SECOND_HEAD);
-        startActivity(intent);
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.frameLayout_second:
+                intent = new Intent(SecondFragment.this.getActivity(), InfoActivity.class);
+                intent.putExtra("path", Conts.URL_SECOND_HEAD);
+                startActivity(intent);
+                break;
+            case R.id.tv_GoToDesign:
+                intent = new Intent(SecondFragment.this.getActivity(), DesignActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 
 }

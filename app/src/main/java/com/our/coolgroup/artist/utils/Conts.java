@@ -9,4 +9,6 @@ public class Conts {
     public final static String URL_SECOND_HEAD = "http://www.jiangwoo.com/jiangwoo_space.html";
 
     public final static String URL_SECOND_DETAIL = "http://api.jiangwoo.com/api/v1/spaces/%d";
+
+    public final static String URL_SECOND_COMMENT = "http://api.jiangwoo.com/api/v2/comments?target_id=%d&target_type=Space&page=1";
 }

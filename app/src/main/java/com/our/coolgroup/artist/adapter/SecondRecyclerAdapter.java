@@ -45,6 +45,10 @@ public class SecondRecyclerAdapter extends RecyclerView.Adapter<SecondRecyclerAd
         notifyDataSetChanged();
     }
 
+    public List<SecondBean.SpacesBean> getList() {
+        return list;
+    }
+
     public void clearList() {
         list.clear();
     }
