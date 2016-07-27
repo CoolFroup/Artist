@@ -46,7 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
 
@@ -97,6 +97,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_weight="1">
 
                     <ImageView
@@ -126,6 +128,9 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
+
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -156,6 +161,8 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -186,6 +193,8 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -224,6 +233,8 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -254,6 +265,8 @@
 
 
                 <LinearLayout
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -284,6 +297,8 @@
 
 
                 <LinearLayout
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -315,6 +330,8 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -347,8 +364,8 @@
 
             <LinearLayout
                 android:layout_width="200dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
@@ -356,7 +373,9 @@
                     android:id="@+id/tabLayout_first"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+
                     app:tabIndicatorColor="#000000"
                     app:tabSelectedTextColor="#000000"
                     app:tabTextColor="#d6d6d6">
@@ -364,10 +383,11 @@
                 </android.support.design.widget.TabLayout>
             </LinearLayout>
 
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager_first"
                 android:layout_width="match_parent"
-                android:layout_height="3000000dp">
+                android:layout_height="3000dp">
 
             </android.support.v4.view.ViewPager>
 
