@@ -59,17 +59,17 @@ public class RegisterActivity extends BaseActivity {
     ImageView mImgCancle;
     public static final MediaType JSON
         = MediaType.parse("application/json; charset=utf-8");
-    int time=60;
-    private Handler mHandler=new Handler(){
+    int time = 60;
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-           String textRemind= (String) msg.obj;
+            String textRemind = (String) msg.obj;
             Toast.makeText(RegisterActivity.this, textRemind, Toast.LENGTH_SHORT).show();
         }
     };
- private Handler mHandler2=new Handler(){
+    private Handler mHandler2 = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -79,7 +79,7 @@ public class RegisterActivity extends BaseActivity {
                 Bundle bundle = msg.getData();
                 String textRemind = bundle.getString("textRemind");
                 Toast.makeText(RegisterActivity.this, textRemind, Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 //user不为空，注册成功
                 SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("token", MODE_PRIVATE);
                 SharedPreferences.Editor edit = sharedPreferences.edit();
@@ -88,7 +88,7 @@ public class RegisterActivity extends BaseActivity {
                 String username = user.getUsername();
                 edit.putString("username", username);
                 edit.commit();
-                Toast.makeText(RegisterActivity.this, "注册成功"+username, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "注册成功" + username, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
 
@@ -137,9 +137,11 @@ public class RegisterActivity extends BaseActivity {
 
                 break;
             case R.id.txt_user_agreement:
-
+                Intent intent = new Intent(this, UserAgreementActivity.class);
+                startActivity(intent);
                 break;
             case R.id.txt_any_question:
+
 
                 break;
             case R.id.img_cancle:
@@ -147,8 +149,10 @@ public class RegisterActivity extends BaseActivity {
                 break;
         }
     }
+
     //注册
     private void regist() {
+
         RegistPostBean registPostBean = new RegistPostBean();
         registPostBean.setDevice("Android");
         registPostBean.setVersion("1.3.0");
@@ -164,12 +168,12 @@ public class RegisterActivity extends BaseActivity {
         registPostBean.setUser(userBean);
         String postJson = new Gson().toJson(registPostBean);
 
-        Log.e("===postJson",postJson);
+        Log.e("===postJson", postJson);
 
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody requestBody = RequestBody.create(JSON, postJson);
         Request request = new Request.Builder().url(Conts.URL_REGIST)
-                            .post(requestBody).build();
+                              .post(requestBody).build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
@@ -181,22 +185,22 @@ public class RegisterActivity extends BaseActivity {
             public void onResponse(Response response) throws IOException {
                 String textRemind;
                 if (response != null) {
-                    String registResult=response.body().string();
-                    Log.e("===registResult",registResult);
+                    String registResult = response.body().string();
+                    Log.e("===registResult", registResult);
                     RegistBackBean registBackBean = new Gson().fromJson(registResult, RegistBackBean.class);
-                    if (registBackBean.getError_code()==409) {
-                       textRemind="您已注册";
+                    if (registBackBean.getError_code() == 409) {
+                        textRemind = "您已注册";
                         Message message = Message.obtain();
                         Bundle bundle = new Bundle();
-                        bundle.putString("textRemind",textRemind);
+                        bundle.putString("textRemind", textRemind);
                         message.setData(bundle);
                         mHandler2.sendMessage(message);
                     }
                     RegistBackBean.UserBean user = registBackBean.getUser();
                     if (user != null) {
-                        textRemind="注册成功";
+                        textRemind = "注册成功";
                         Message message = Message.obtain();
-                        message.obj=user;
+                        message.obj = user;
                         mHandler2.sendMessage(message);
                         // TODO: 2016/7/27 发送user？  得到token 或者 username 跳转到首页
 
@@ -215,7 +219,7 @@ public class RegisterActivity extends BaseActivity {
         encodingBuilder.add("phone", phone);
         encodingBuilder.add("country", country);
         final Request request = new Request.Builder().url(Conts.URL_GETCODE)
-                              .post(encodingBuilder.build()).build();
+                                    .post(encodingBuilder.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -241,21 +245,21 @@ public class RegisterActivity extends BaseActivity {
 
                     if (result != null) {
                         if (result.equals("ok")) {
-                            textRemind="请求成功";
+                            textRemind = "请求成功";
                             Message message = Message.obtain();
-                            message.obj=textRemind;
+                            message.obj = textRemind;
                             mHandler.sendMessage(message);
                         }
                     }
 
                     int error_code = getCodeBean.getError_code();
 
-                        if(error_code==420){
-                            textRemind="请求失败,操作过于频繁";
-                            Message message = Message.obtain();
-                            message.obj=textRemind;
-                            mHandler.sendMessage(message);
-                        }
+                    if (error_code == 420) {
+                        textRemind = "请求失败,操作过于频繁";
+                        Message message = Message.obtain();
+                        message.obj = textRemind;
+                        mHandler.sendMessage(message);
+                    }
                 }
             }
         });
