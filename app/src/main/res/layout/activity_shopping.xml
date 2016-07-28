@@ -1,30 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-    <RelativeLayout
+    android:layout_height="match_parent"
+
+    tools:context="com.our.coolgroup.artist.activity.ShoppingActivity">
+    <LinearLayout
+        android:id="@+id/titleLayout_shopping_first"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@android:color/black">
+        android:background="#000000"
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/img_back_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:clickable="true"
             android:onClick="back"
             android:src="@mipmap/btn_back"/>
 
         <TextView
+            android:id="@+id/title_shopping_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="购物车"
-            android:textColor="@android:color/white"
-            android:textSize="17dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="100dp"
+            android:textColor="#ffffff"
+            android:text="商品详情"
+            android:textSize="18dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15dp"
+            android:textColor="#e6e6e6"
+            android:layout_marginLeft="90dp"
+            android:text="客服"/>
+    </LinearLayout>
+
+
+    <com.our.coolgroup.artist.snapscrollview.McoySnapPageLayout
+        android:id="@+id/flipLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_below="@id/titleLayout_shopping_first">
+    </com.our.coolgroup.artist.snapscrollview.McoySnapPageLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#1ebbb4"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            android:text="直达链接"
+            android:gravity="center"
             />
-    </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/buyLayout_shopping"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:src="@mipmap/btn_shopping_cart_in_product_details"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="3"
+            android:background="#1ebbb4"
+            android:text="加入购物车"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="3"
+            android:text="直接购买"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:gravity="center"/>
+    </LinearLayout>
+</RelativeLayout>

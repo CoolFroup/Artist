@@ -33,7 +33,7 @@ public class HeaderAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         HeaderFragment headerFragment = new HeaderFragment();
-        headerFragment.setImgUrl(data.get(position).getThumb());
+        headerFragment.setImgUrl(data.get(position).getThumb(),data.get(position).getTarget_id());
         return headerFragment;
     }
 
