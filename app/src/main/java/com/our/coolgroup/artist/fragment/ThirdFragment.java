@@ -16,15 +16,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.our.coolgroup.artist.R;
+import com.our.coolgroup.artist.activity.ShoppingActivity;
+import com.our.coolgroup.artist.activity.ThirdAddressActivity;
+import com.our.coolgroup.artist.activity.ThirdCompeleteActivity;
+import com.our.coolgroup.artist.activity.ThirdCouponsActivity;
+import com.our.coolgroup.artist.activity.ThirdEsignersActivity;
 import com.our.coolgroup.artist.activity.LoginActivity;
+import com.our.coolgroup.artist.activity.ThirdGoodsLikeActivity;
+import com.our.coolgroup.artist.activity.ThirdGoodsOrderActivity;
+import com.our.coolgroup.artist.activity.ThirdMessageActivity;
+import com.our.coolgroup.artist.activity.ThirdPreparePayActivity;
+import com.our.coolgroup.artist.activity.ThirdPrepareRecieveActivity;
+import com.our.coolgroup.artist.activity.ThirdServiceActivity;
+import com.our.coolgroup.artist.activity.ThirdSpaceLikeActivity;
+import com.our.coolgroup.artist.activity.ThirdSpaceOrderActivity;
 import com.our.coolgroup.artist.activity.UserSettingActivity;
 
 import butterknife.Bind;
@@ -37,8 +48,7 @@ import butterknife.OnClick;
 public class ThirdFragment extends Fragment {
 
 
-    @Bind(R.id.webview)
-    WebView mWebview;
+
     @Bind(R.id.img_third_shopping)
     ImageView mImgThirdShopping;
     @Bind(R.id.img_third_setting)
@@ -79,6 +89,7 @@ public class ThirdFragment extends Fragment {
     LinearLayout mLinearCustomerService;
     @Bind(R.id.linear_esigners_in)
     LinearLayout mLinearEsignersIn;
+
     private boolean isLogin = false;
 
     public ThirdFragment() {
@@ -95,7 +106,6 @@ public class ThirdFragment extends Fragment {
         initView();
         return view;
     }
-
 
 
     private void initView() {
@@ -117,7 +127,7 @@ public class ThirdFragment extends Fragment {
         }
         //构建一个bitmap
         Bitmap backgroundBmp = Bitmap.createBitmap(width,
-                height, Bitmap.Config.ARGB_8888);
+            height, Bitmap.Config.ARGB_8888);
         //new一个Canvas，在backgroundBmp上画图
         Canvas canvas = new Canvas(backgroundBmp);
         Paint paint = new Paint();
@@ -143,15 +153,16 @@ public class ThirdFragment extends Fragment {
         String token = sharedPreferences.getString("token", "None");
         String username = sharedPreferences.getString("username", "username");
         if (!token.equals("None")) {
-            isLogin=true;
-        }else {
-            isLogin=false;
+            isLogin = true;
+        } else {
+            isLogin = false;
             mTxtIsLogin.setText("未登陆");
         }
         if (isLogin) {
             mTxtIsLogin.setText(username);
         }
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -163,15 +174,18 @@ public class ThirdFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("token", Activity.MODE_PRIVATE);
         String token = sharedPreferences.getString("token", "None");
         if (!token.equals("None")) {
-           isLogin=true;
-        }else {
-            isLogin=false;
+            isLogin = true;
+        } else {
+            isLogin = false;
         }
         switch (view.getId()) {
             //购物车
             case R.id.img_third_shopping:
                 if (isLogin) {
                     Toast.makeText(getActivity(), "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getActivity(), ShoppingActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -180,6 +194,7 @@ public class ThirdFragment extends Fragment {
                 break;
             //设置
             case R.id.img_third_setting:
+
 
                 break;
             //登录
@@ -198,7 +213,8 @@ public class ThirdFragment extends Fragment {
             case R.id.linear_preparePay:
                 if (isLogin) {
 
-
+                    Intent intent = new Intent(getActivity(), ThirdPreparePayActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent4 = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent4);
@@ -207,7 +223,8 @@ public class ThirdFragment extends Fragment {
             //待收货
             case R.id.linear_prepareRecieve:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdPrepareRecieveActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent5 = new Intent(getActivity(), LoginActivity.class);
@@ -217,7 +234,8 @@ public class ThirdFragment extends Fragment {
             //已完成
             case R.id.linear_compelete:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdCompeleteActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent6 = new Intent(getActivity(), LoginActivity.class);
@@ -227,7 +245,8 @@ public class ThirdFragment extends Fragment {
             //商品订单
             case R.id.linear_orders:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdGoodsOrderActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent7 = new Intent(getActivity(), LoginActivity.class);
@@ -238,7 +257,8 @@ public class ThirdFragment extends Fragment {
             case R.id.linear_message:
                 if (isLogin) {
 
-
+                    Intent intent = new Intent(getActivity(), ThirdMessageActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent8 = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent8);
@@ -247,7 +267,8 @@ public class ThirdFragment extends Fragment {
             //收货地址
             case R.id.linear_sddress:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdAddressActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent9 = new Intent(getActivity(), LoginActivity.class);
@@ -257,7 +278,8 @@ public class ThirdFragment extends Fragment {
             //优惠券
             case R.id.linear_coupons:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdCouponsActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent10 = new Intent(getActivity(), LoginActivity.class);
@@ -268,7 +290,8 @@ public class ThirdFragment extends Fragment {
             case R.id.linear_space_orders:
                 if (isLogin) {
 
-
+                    Intent intent = new Intent(getActivity(), ThirdSpaceOrderActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent11 = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent11);
@@ -278,7 +301,8 @@ public class ThirdFragment extends Fragment {
             case R.id.linear_space_like:
                 if (isLogin) {
 
-
+                    Intent intent = new Intent(getActivity(), ThirdSpaceLikeActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent12 = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent12);
@@ -287,7 +311,8 @@ public class ThirdFragment extends Fragment {
             //喜欢的商品
             case R.id.linear_products_liked:
                 if (isLogin) {
-
+                    Intent intent = new Intent(getActivity(), ThirdGoodsLikeActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Intent intent13 = new Intent(getActivity(), LoginActivity.class);
@@ -296,23 +321,14 @@ public class ThirdFragment extends Fragment {
                 break;
             //联系客服
             case R.id.linear_customer_service:
-
+                Intent intent2 = new Intent(getActivity(), ThirdServiceActivity.class);
+                startActivity(intent2);
                 break;
             //设计师入驻
             case R.id.linear_esigners_in:
-                WebSettings webSettings = mWebview.getSettings();
-
-                mWebview.loadUrl("http://www.baidu.com");
-                //                mWebview.setWebViewClient(new WebViewClient(){
-                //                    @Override
-                //                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //                        view.loadUrl("http://www.jiangwoo.com/designers/join_us.html");
-                //                        return super.shouldOverrideUrlLoading(view, url);
-                //                    }
-                //                });
+                Intent intent = new Intent(getActivity(), ThirdEsignersActivity.class);
+                startActivity(intent);
                 break;
         }
     }
-
-
 }

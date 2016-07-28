@@ -119,15 +119,15 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void run() {
                         adapter.clearList();
-                        adapter.notifyDataSetChanged();
+                        //                        adapter.notifyDataSetChanged();
 
                         String path = String.format(Conts.URL_SECOND_INDEX, ++page);
-                        if (page == 8)
+                        if ( page == 8 )
                             page = 1;
                         loadData(path);
 
                         //判断是否正在刷新
-                        if (mSwipeRefreshLayout.isRefreshing()) {
+                        if ( mSwipeRefreshLayout.isRefreshing() ) {
                             //如果正在刷新，则关闭刷新
                             mSwipeRefreshLayout.setRefreshing(false);
                         }
@@ -149,11 +149,11 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition + 1 == adapter.getItemCount()) {
-                    if (!isDown) {
+                if ( newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition + 1 == adapter.getItemCount() ) {
+                    if ( !isDown ) {
                         isDown = true;
                         loadData(String.format(Conts.URL_SECOND_INDEX, ++page));
-                        if (page == 8)
+                        if ( page == 8 )
                             page = 1;
                         adapter.notifyDataSetChanged();
                     } else {
@@ -174,8 +174,8 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     private void loadData(String path) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(path)
-                .build();
+                              .url(path)
+                              .build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -185,7 +185,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                if (response != null) {
+                if ( response != null ) {
                     Gson gson = new Gson();
                     String string = response.body().string();
                     com.our.coolgroup.artist.bean.SecondBean secondBean = gson.fromJson(string, com.our.coolgroup.artist.bean.SecondBean.class);
@@ -201,7 +201,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()) {
+        switch ( v.getId() ) {
             case R.id.frameLayout_second:
                 intent = new Intent(SecondFragment.this.getActivity(), InfoActivity.class);
                 intent.putExtra("path", Conts.URL_SECOND_HEAD);

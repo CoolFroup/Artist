@@ -1,16 +1,11 @@
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#cccccc"
     tools:context="com.our.coolgroup.artist.fragment.ThirdFragment">
-    <WebView
-        android:background="@android:color/holo_blue_bright"
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </WebView>
+
    <LinearLayout
        android:orientation="vertical"
        android:layout_width="match_parent"
@@ -504,9 +499,12 @@
                     android:layout_height="20dp"
                     android:background="#eeeeee"/>
             </LinearLayout>
+
+
+
+
         </LinearLayout>
-
-
     </ScrollView>
    </LinearLayout>
-</RelativeLayout>
+
+</FrameLayout>

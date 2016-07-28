@@ -75,7 +75,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             bean = (Header_firstBean) msg.obj;
 
             adapter = new HeaderAdapter(getChildFragmentManager());
-            if (bean.getHeadlines() != null) {
+            if ( bean.getHeadlines() != null ) {
                 adapter.setData(bean.getHeadlines());
             }
             index_header_viewpager.setAdapter(adapter);
@@ -89,10 +89,10 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
+            switch ( msg.what ) {
                 case AUTO_MSG:
                     index_header_viewpager.setCurrentItem(index++);
-                    if (index == 2) {
+                    if ( index == 2 ) {
                         index = 0;
                     }
                     break;
@@ -121,7 +121,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         mOkHttpClient = new OkHttpClient();
         //header的解析地址
         Request request = new Request.Builder().url("http://api.jiangwoo.com/api/v1/headlines?page=1")
-                .build();
+                              .build();
         final Call call = mOkHttpClient.newCall(request);
 
         new Thread(new Runnable() {
@@ -130,7 +130,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 try {
                     Response response = call.execute();
                     Gson gson = new Gson();
-                    if (response != null) {
+                    if ( response != null ) {
                         Header_firstBean bean = gson.fromJson(response.body().string(), Header_firstBean.class);
 
                         Message msg = Message.obtain();
@@ -138,7 +138,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                         handler.sendMessage(msg);
 
                     }
-                } catch (IOException e) {
+                } catch ( IOException e ) {
                     e.printStackTrace();
                 }
             }
@@ -155,7 +155,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onPageSelected(int position) {
-                for (int i = 0; i < linearLayout_head.getChildCount(); i++) {
+                for ( int i = 0; i < linearLayout_head.getChildCount(); i++ ) {
                     (linearLayout_head.getChildAt(i)).setSelected(false);
                 }
                 ((ImageView) linearLayout_head.getChildAt(position)).setSelected(true);
@@ -221,7 +221,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
     private void setTitle() {
         Request request = new Request.Builder().url("http://api.jiangwoo.com/api/v1/categories")
-                .build();
+                              .build();
         final Call call = mOkHttpClient.newCall(request);
         new Thread(new Runnable() {
             @Override
@@ -229,13 +229,13 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 try {
                     Response response = call.execute();
                     Gson gson = new Gson();
-                    if (response != null) {
+                    if ( response != null ) {
                         TitleBean_first bean = gson.fromJson(response.body().string(), TitleBean_first.class);
                         List<TitleBean_first.CategoriesBean> categories = bean.getCategories();
 
                         final String[] img_title = new String[8];
                         final String[] txt_title = new String[8];
-                        for (int i = 0; i < categories.size(); i++) {
+                        for ( int i = 0; i < categories.size(); i++ ) {
                             img_title[i] = categories.get(categories.size() - i - 1).getImage_black();
                             txt_title[i] = categories.get(categories.size() - i - 1).getTitle();
                         }
@@ -244,7 +244,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void run() {
 
-                                Glide.with(getActivity()).load(img_title[0]).into(iv_title_first1);
+                                Glide.with(FirstFragment.this.getActivity()).load(img_title[0]).into(iv_title_first1);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[1]).into(iv_title_first2);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[2]).into(iv_title_first3);
                                 Glide.with(FirstFragment.this.getContext()).load(img_title[3]).into(iv_title_first4);
@@ -267,7 +267,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                         });
 
                     }
-                } catch (IOException e) {
+                } catch ( IOException e ) {
                     e.printStackTrace();
                 }
             }
@@ -281,11 +281,11 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         sTitles.add("独立设计");
         sTitles.add("匠物精选");
 
-        for (int i = 0; i < 2; i++) {
+        for ( int i = 0; i < 2; i++ ) {
             ListFragment fragment = new ListFragment();
             Bundle bundle = new Bundle();
 
-//            bundle.putInt("id", id[i]);
+            //            bundle.putInt("id", id[i]);
             bundle.putString("path", path[i]);
             fragment.setArguments(bundle);
             sFragments.add(fragment);
@@ -308,7 +308,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void initListner(){
+    public void initListner() {
         guijia_first.setOnClickListener(this);
         zuoyi_first.setOnClickListener(this);
         zhuoji_first.setOnClickListener(this);
@@ -323,12 +323,12 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()) {
+        switch ( v.getId() ) {
             case R.id.guijia_first:
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%9F%9C%E6%9E%B6");
-                bundle.putString("title","柜架");
+                bundle.putString("title", "柜架");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -336,7 +336,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%BA%A7%E6%A4%85");
-                bundle.putString("title","座椅");
+                bundle.putString("title", "座椅");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -344,7 +344,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%A1%8C%E5%87%A0");
-                bundle.putString("title","桌几");
+                bundle.putString("title", "桌几");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -352,7 +352,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%BA%8A");
-                bundle.putString("title","床");
+                bundle.putString("title", "床");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -360,7 +360,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E6%B2%99%E5%8F%91");
-                bundle.putString("title","沙发");
+                bundle.putString("title", "沙发");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -368,7 +368,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E7%81%AF%E5%85%B7");
-                bundle.putString("title","灯具");
+                bundle.putString("title", "灯具");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -376,7 +376,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E8%A3%85%E9%A5%B0");
-                bundle.putString("title","装饰");
+                bundle.putString("title", "装饰");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -384,7 +384,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 bundle.clear();
                 intent = new Intent(FirstFragment.this.getContext(), FenleiActivity.class);
                 bundle.putString("path", "http://api.jiangwoo.com/api/v2/products?page=1&category=%E5%99%A8%E7%9A%BF");
-                bundle.putString("title","器皿");
+                bundle.putString("title", "器皿");
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;

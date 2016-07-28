@@ -35,6 +35,33 @@
         </activity>
         <activity android:name=".activity.FenleiActivity">
         </activity>
+        <activity android:name=".activity.ThirdEsignersActivity">
+        </activity>
+        <activity android:name=".activity.UserAgreementActivity"/>
+        <activity android:name=".activity.ThirdGoodsOrderActivity">
+        </activity>
+        <activity android:name=".activity.ThirdMessageActivity">
+        </activity>
+        <activity android:name=".activity.ThirdAddressActivity">
+        </activity>
+        <activity android:name=".activity.ThirdCouponsActivity">
+        </activity>
+        <activity android:name=".activity.ThirdSpaceOrderActivity">
+        </activity>
+        <activity android:name=".activity.ThirdSpaceLikeActivity">
+        </activity>
+        <activity android:name=".activity.ThirdGoodsLikeActivity">
+        </activity>
+        <activity android:name=".activity.ThirdServiceActivity">
+        </activity>
+        <activity android:name=".activity.ThirdPreparePayActivity">
+        </activity>
+        <activity android:name=".activity.ThirdPrepareRecieveActivity">
+        </activity>
+        <activity android:name=".activity.ThirdCompeleteActivity">
+        </activity>
+        <activity android:name=".activity.ShoppingActivity">
+        </activity>
     </application>
 
 </manifest>

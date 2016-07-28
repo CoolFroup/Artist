@@ -78,6 +78,7 @@ public class UserSettingActivity extends BaseActivity {
             case R.id.relative_phonenumber:
                 break;
             case R.id.txt_exit:
+                //退出登录  把token变成none
                 SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 edit.putString("token","None");

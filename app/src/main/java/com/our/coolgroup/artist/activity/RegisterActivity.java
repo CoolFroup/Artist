@@ -152,7 +152,7 @@ public class RegisterActivity extends BaseActivity {
 
     //注册
     private void regist() {
-
+        //把需要提交的字段加入bean中
         RegistPostBean registPostBean = new RegistPostBean();
         registPostBean.setDevice("Android");
         registPostBean.setVersion("1.3.0");
@@ -166,15 +166,18 @@ public class RegisterActivity extends BaseActivity {
         userBean.setCountry("CN");
 
         registPostBean.setUser(userBean);
+        //把bean变成json
         String postJson = new Gson().toJson(registPostBean);
 
         Log.e("===postJson", postJson);
 
         OkHttpClient okHttpClient = new OkHttpClient();
+        //请求体
         RequestBody requestBody = RequestBody.create(JSON, postJson);
+
         Request request = new Request.Builder().url(Conts.URL_REGIST)
                               .post(requestBody).build();
-
+        //请求
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
