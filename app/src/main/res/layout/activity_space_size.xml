@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000"
+    tools:context="com.our.coolgroup.artist.activity.SpaceSizeActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="backToDesign"
+            android:src="@mipmap/btn_back"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:onClick="backToSecond"
+            android:src="@mipmap/ic_cancel"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="40dp"
+        android:text="单位:平米"
+        android:textColor="#ffffffff"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_SpaceSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/shape_tv_space_size"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onTouchSpaceSizeClick"
+            android:textColor="#ffffffff"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/shape_tv_space_size"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onTouchSpaceSizeClick"
+            android:textColor="#ffffffff"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/shape_tv_space_size"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onTouchSpaceSizeClick"
+            android:textColor="#ffffffff"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/shape_tv_space_size"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onTouchSpaceSizeClick"
+            android:textColor="#ffffffff"/>
+
+
+    </LinearLayout>
+
+    <com.our.coolgroup.artist.customview.MySeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:progress="20"/>
+
+    <com.our.coolgroup.artist.customview.MySeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:progress="40"/>
+
+</RelativeLayout>

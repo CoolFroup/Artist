@@ -1,14 +1,16 @@
 package com.our.coolgroup.artist.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.our.coolgroup.artist.R;
-import com.our.coolgroup.artist.bean.DesignTypeBean;
+import com.our.coolgroup.artist.bean.SpaceSizeBean;
 import com.our.coolgroup.artist.customview.MyDialog;
 import com.our.coolgroup.artist.utils.Conts;
 import com.squareup.okhttp.Call;
@@ -19,33 +21,41 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public class DesignActivity extends BaseActivity {
-    private DesignTypeBean bean;
+public class SpaceSizeActivity extends BaseActivity {
+
+    private LinearLayout mLinearLayout;
+    private SpaceSizeBean bean;
+    private int type;
 
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            //选择类型
-            bean = (DesignTypeBean) msg.obj;
+            bean = (SpaceSizeBean) msg.obj;
 
+            for (int i = 0; i < mLinearLayout.getChildCount(); i++) {
+                SpaceSizeBean.SpaceSizesBean sizesBean = bean.getSpace_sizes().get(i);
+                ((TextView) mLinearLayout.getChildAt(i)).setText(sizesBean.getRange_low() + "-" + sizesBean.getRange_high());
+            }
         }
     };
 
     @Override
     void initView() {
-        setContentView(R.layout.activity_design);
+        setContentView(R.layout.activity_space_size);
+        mLinearLayout = (LinearLayout) findViewById(R.id.linear_SpaceSize);
+
+        type = getIntent().getIntExtra("type", 0);
+
+
     }
 
     @Override
     void initData() {
         OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder().url(Conts.URL_DESIGN_TYPE).build();
-
+        final Request request = new Request.Builder().url(Conts.URL_DESIGN_SIZE).build();
         Call call = client.newCall(request);
-
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -55,10 +65,10 @@ public class DesignActivity extends BaseActivity {
             @Override
             public void onResponse(Response response) throws IOException {
                 Gson gson = new Gson();
-                DesignTypeBean typeBean = gson.fromJson(response.body().string(), DesignTypeBean.class);
+                SpaceSizeBean spaceSizeBean = gson.fromJson(response.body().string(), SpaceSizeBean.class);
 
-                Message msg = new Message();
-                msg.obj = typeBean;
+                Message msg = Message.obtain();
+                msg.obj = spaceSizeBean;
                 handler.sendMessage(msg);
             }
         });
@@ -72,6 +82,33 @@ public class DesignActivity extends BaseActivity {
     @Override
     protected void destoryViews() {
 
+    }
+
+    public void onTouchSpaceSizeClick(View view) {
+        int index = mLinearLayout.indexOfChild(view);
+        Intent intent = new Intent(SpaceSizeActivity.this, SpaceDesignFeesActivity.class);
+        Bundle bundle = new Bundle();
+        switch (index) {
+            case 0:
+                bundle.putInt("size", bean.getSpace_sizes().get(0).getId());
+                break;
+            case 1:
+                bundle.putInt("size", bean.getSpace_sizes().get(1).getId());
+                break;
+            case 2:
+                bundle.putInt("size", bean.getSpace_sizes().get(2).getId());
+                break;
+            case 3:
+                bundle.putInt("size", bean.getSpace_sizes().get(3).getId());
+                break;
+        }
+        bundle.putInt("type", type);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void backToDesign(View view) {
+        finish();
     }
 
     public void backToSecond(View view) {
@@ -96,38 +133,5 @@ public class DesignActivity extends BaseActivity {
                 dialog.cancel();
             }
         });
-    }
-
-    public void onTouchClick(View view) {
-        Intent intent = new Intent(DesignActivity.this, SpaceSizeActivity.class);
-        int type = 0;
-        switch (view.getId()) {
-            case R.id.canyin_designType:
-                type = bean.getSpace_types().get(0).getType_id();
-                break;
-            case R.id.bangong_designType:
-                type = bean.getSpace_types().get(1).getType_id();
-                break;
-            case R.id.yishu_designType:
-                type = bean.getSpace_types().get(2).getType_id();
-                break;
-            case R.id.jiudian_designType:
-                type = bean.getSpace_types().get(3).getType_id();
-                break;
-            case R.id.shenghuo_designType:
-                type = bean.getSpace_types().get(4).getType_id();
-                break;
-            case R.id.lingshou_designType:
-                type = bean.getSpace_types().get(5).getType_id();
-                break;
-            case R.id.gonggong_designType:
-                type = bean.getSpace_types().get(6).getType_id();
-                break;
-            case R.id.qita_designType:
-                type = bean.getSpace_types().get(7).getType_id();
-                break;
-        }
-        intent.putExtra("type", type);
-        startActivity(intent);
     }
 }

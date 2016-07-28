@@ -43,4 +43,10 @@ public class Conts {
     public final static String URL_SECOND_DETAIL = "http://api.jiangwoo.com/api/v1/spaces/%d";
 
     public final static String URL_SECOND_COMMENT = "http://api.jiangwoo.com/api/v2/comments?target_id=%d&target_type=Space&page=1";
+
+    public final static String URL_DESIGN_TYPE = "http://api.jiangwoo.com/api/v2/space_types";
+
+    public final static String URL_DESIGN_SIZE = "http://api.jiangwoo.com/api/v2/space_sizes";
+
+    public final static String URL_DESIGN_FEES = "http://api.jiangwoo.com/api/v2/space_design_fees";
 }

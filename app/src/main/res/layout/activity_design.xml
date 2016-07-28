@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
@@ -26,20 +26,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/canyin_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_dining_space_unpressed"/>
+                android:background="@drawable/btn_selector_1"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/bangong_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_office_space_unpressed"/>
+                android:background="@drawable/btn_selector_2"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -49,16 +54,22 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/yishu_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_art_space_unpressed"/>
+                android:background="@drawable/btn_selector_3"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/jiudian_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_hotel_unpressed"/>
+                android:background="@drawable/btn_selector_4"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -68,16 +79,22 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/shenghuo_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_life_club_unpressed"/>
+                android:background="@drawable/btn_selector_5"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/lingshou_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_public_space_unpressed"/>
+                android:background="@drawable/btn_selector_6"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -87,28 +104,33 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/gonggong_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_retail_display_unpressed"/>
+                android:background="@drawable/btn_selector_7"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/qita_designType"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/btn_st_other_space_unpressed"/>
+                android:background="@drawable/btn_selector_8"
+                android:clickable="true"
+                android:onClick="onTouchClick"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <SeekBar
+    <com.our.coolgroup.artist.customview.MySeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="200dp"
         android:max="100"
-        android:progress="25"/>
+        android:progress="20"/>
 
 
 </RelativeLayout>
