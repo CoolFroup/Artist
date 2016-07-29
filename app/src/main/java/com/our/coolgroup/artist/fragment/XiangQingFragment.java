@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -42,7 +43,25 @@ public class XiangQingFragment extends Fragment {
         lv = (ListView) view.findViewById(R.id.lv_xiangqing);
         mAdapter = new XiangqingAdapter(data,getContext());
         lv.setAdapter(mAdapter);
+        lv.setOnTouchListener(new View.OnTouchListener() {
 
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+
+                View firstChild = lv.getChildAt(0);
+                // 获得ListView当前显示的第一个item的id
+
+                if (firstChild.getTop() != 0) {
+                    lv.getParent().requestDisallowInterceptTouchEvent(true);
+
+                }else {
+                    lv.getParent().requestDisallowInterceptTouchEvent(false);
+                }
+
+                return false;
+            }
+        });
         return view;
     }
+
 }
