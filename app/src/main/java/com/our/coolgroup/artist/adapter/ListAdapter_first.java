@@ -69,8 +69,6 @@ public class ListAdapter_first extends RecyclerView.Adapter<ListAdapter_first.Vi
                 id = data.get(position).getId();
                 path1 = String.format(path, id);
 
-                Log.e("TAG", "--------------path1" + path1);
-                Log.e("TAG", "-------------id" + id);
                 Intent intent = new Intent(mContext, ShoppingActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("path", path1);
