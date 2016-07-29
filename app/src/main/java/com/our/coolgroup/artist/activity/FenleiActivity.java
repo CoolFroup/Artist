@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class FenleiActivity extends AppCompatActivity {
-    private String path,title;
+    private String path, title;
     private RecyclerView mRecyclerView;
     private ListAdapter_first adapter;
     private OkHttpClient mOkHttpClient;
@@ -34,8 +34,9 @@ public class FenleiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fenlei);
+
         path = getIntent().getExtras().getString("path");
-        title=getIntent().getExtras().getString("title");
+        title = getIntent().getExtras().getString("title");
         initView();
         initData();
     }
@@ -46,6 +47,7 @@ public class FenleiActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
             data = (List<ItemBean_first.ProductsBean>) msg.obj;
 
 
@@ -58,7 +60,7 @@ public class FenleiActivity extends AppCompatActivity {
 
     private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_fenlei_first);
-        title_fenlei_first= (TextView) findViewById(R.id.title_fenlei_first);
+        title_fenlei_first = (TextView) findViewById(R.id.title_fenlei_first);
     }
 
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +36,13 @@ public class ListAdapter_first extends RecyclerView.Adapter<ListAdapter_first.Vi
     private String path = "http://api.jiangwoo.com/api/v1/products/%d";
     private List<ItemBean_first.ProductsBean> data;
     private int id;
-
+    private String path1 = "";
     private RecyclerView mRecyclerView;
 
     public ListAdapter_first(Context context, List<ItemBean_first.ProductsBean> data) {
+        if (this.data != null) {
+            this.data.clear();
+        }
         this.mContext = context;
         this.data = data;
     }
@@ -53,19 +57,23 @@ public class ListAdapter_first extends RecyclerView.Adapter<ListAdapter_first.Vi
 
 
     @Override
-    public void onBindViewHolder(ListAdapter_first.ViewHolder holder, int position) {
+    public void onBindViewHolder(ListAdapter_first.ViewHolder holder, final int position) {
         Glide.with(mContext).load(data.get(position).getThumb()).into(holder.iv_item_first);
         holder.tv_item1_first.setText(data.get(position).getTitle());
         holder.tv_item2_first.setText(data.get(position).getView_count() + "");
         holder.tv_item3_first.setText(data.get(position).getFavs_count() + "");
-        id=data.get(position).getId();
-        path = String.format(path,id);
+
         holder.item_first.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                id = data.get(position).getId();
+                path1 = String.format(path, id);
+
+                Log.e("TAG", "--------------path1" + path1);
+                Log.e("TAG", "-------------id" + id);
                 Intent intent = new Intent(mContext, ShoppingActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("path",path);
+                bundle.putString("path", path1);
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }
