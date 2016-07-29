@@ -89,7 +89,7 @@ public class RegisterActivity extends BaseActivity {
                 edit.putString("username", username);
                 edit.commit();
                 Toast.makeText(RegisterActivity.this, "注册成功" + username, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, MainmainActivity.class);
                 startActivity(intent);
 
             }

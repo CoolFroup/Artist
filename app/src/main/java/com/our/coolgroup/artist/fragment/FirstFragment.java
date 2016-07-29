@@ -22,6 +22,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.our.coolgroup.artist.activity.FenleiActivity;
+import com.our.coolgroup.artist.activity.MainScanActivity;
+import com.our.coolgroup.artist.adapter.HeaderAdapter;
+import com.our.coolgroup.artist.adapter.ViewPagerAdapter;
 import com.our.coolgroup.artist.bean.Header_firstBean;
 import com.our.coolgroup.artist.bean.TitleBean_first;
 import com.our.coolgroup.artist.R;
@@ -65,6 +68,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     private String[] path = {"http://api.jiangwoo.com/api/v2/products?page=1&source=jiangwoo", "http://api.jiangwoo.com/api/v2/products?page=1&source=external"};
 
     private Bundle bundle;
+    private ImageView mImgScan;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -217,7 +221,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         dengju_first = (LinearLayout) mView.findViewById(R.id.dengju_first);
         zhuangshi_first = (LinearLayout) mView.findViewById(R.id.zhuangshi_first);
         qimin_first = (LinearLayout) mView.findViewById(R.id.qimin_first);
-
+        mImgScan = ((ImageView) mView.findViewById(R.id.img_scan));
 
     }
 
@@ -319,7 +323,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         dengju_first.setOnClickListener(this);
         zhuangshi_first.setOnClickListener(this);
         qimin_first.setOnClickListener(this);
-
+        mImgScan.setOnClickListener(this);
     }
 
     @Override
@@ -390,6 +394,13 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
+            case R.id.img_scan:
+
+                Intent intent1 = new Intent(getActivity(), MainScanActivity.class);
+                startActivity(intent1);
+                break;
+
+
         }
     }
 }

@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity {
                 } else {
                     mProgressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent1 = new Intent(LoginActivity.this, MainmainActivity.class);
                     startActivity(intent1);
                     LoginBean.UserBean user = loginBean.getUser();
                     String auth_token = user.getAuth_token();
@@ -146,7 +146,7 @@ public class LoginActivity extends BaseActivity {
         //                    @Override
         //                    public void run() {
         //                        mProgressBar.setVisibility(View.GONE);
-        //                        Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
+        //                        Intent intent1 = new Intent(LoginActivity.this, MainmainActivity.class);
         //                        startActivity(intent1);
         //                    }
         //                });

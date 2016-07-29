@@ -16,7 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainmainActivity extends BaseActivity {
 
     @Bind(R.id.linear_main_fragment)
     LinearLayout mLinearMainFragment;
